@@ -1,0 +1,1 @@
+Bohužial stránka je offline.
