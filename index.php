@@ -2,6 +2,8 @@
 
     require_once("./system/config.php");
 
+    include_once(__LOCALESET__."/index.php");
+
     include_once(__PAGES__."/header.php");
 
     if(Project::getSetting("project_maintenance") && __ACTUAL_URL__ != __URL__."/index.php?page=maintenance"){

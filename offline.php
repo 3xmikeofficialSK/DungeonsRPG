@@ -1,1 +1,1 @@
-Bohuûial str·nka je offline.
+Bohu≈æial str√°nka je offline.

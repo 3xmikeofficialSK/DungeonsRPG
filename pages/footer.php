@@ -1,9 +1,9 @@
             </div>
             <div class="col-3">
-                <div class="card">
-                    <div class="card-header">Title</div>
-                    <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, fugit vel ratione, distinctio sed maxime perferendis provident, nihil optio voluptatum soluta. Accusamus atque fugit nulla sint consequuntur, numquam vitae debitis.</div>
-                </div>
+                
+                <!-- Zmena jazyku -->
+                <?php include_once(__PAGES__."/change_language.php"); ?>
+
             </div>
         
         </div>

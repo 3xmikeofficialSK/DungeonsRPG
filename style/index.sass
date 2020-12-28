@@ -5,6 +5,7 @@ $nav-bg-hover: #1b1b1e
 $card-header-bg: #1b1b1e
 $card-body-bg: #242428
 $card-text: #ffffff
+$card-select: #1b1b1e
 $search-bg: #161717
 $search-btn: tomato
 
@@ -16,9 +17,14 @@ header
     width: 100%
     background-color: darken($background, 73)
     text-align: center
-    line-height: 386px
     font-size: 72px
     margin-bottom: 30px
+    justify-content: center
+    align-items: center
+    display: flex
+    h3
+        color: $header-color
+        opacity: 0.7
     a
         color: $header-color
         text-decoration: none
@@ -55,3 +61,10 @@ header
         border-radius: 0px
     .card-body
         background-color: $card-body-bg
+        select
+            background-color: $card-select
+            border: none
+            color: white
+            &:focus
+                outline: none
+                box-shadow: none

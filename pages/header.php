@@ -9,7 +9,16 @@
     </head>
     <body>
 
-        <header><a href="#">TheNinja</a></header>
+        <header>
+            <div class="row">
+                <h1 class="col-12">
+                    <a href="#">TheNinja</a>
+                </h1>
+                <h3 class="col-12">
+                    Become a powerful ninja!
+                </h3>
+            </div>
+        </header>
 
         <div class="container">
 

@@ -57,8 +57,8 @@
         define("__LOCALESET__", __LOCALE__."/".$_SESSION["LOCALE_SET"]);
 
     } else {
-
-        define("__LOCALESET__", __LOCALE__.__LOCALE_DEFAULT__);
+        $_SESSION["LOCALE_SET"] = __LOCALE_DEFAULT__;
+        define("__LOCALESET__", __LOCALE__."/".__LOCALE_DEFAULT__);
 
     }
 
