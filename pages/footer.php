@@ -1,6 +1,9 @@
             </div>
             <div class="col-3">
                 
+                <!-- Prihlasenie -->
+                <?php include_once(__PAGES__."/login.php"); ?>
+
                 <!-- Zmena jazyku -->
                 <?php include_once(__PAGES__."/change_language.php"); ?>
 

@@ -18,9 +18,11 @@
         <a class="nav-link <?= isset($_GET["page"]) ? "" : "active"; ?>" href="<?= __URL__; ?>">Domov</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
+      <?php if(!User::isLoggedIn()){ ?>
+        <li class="nav-item <?= isset($_GET["page"]) == "register" ? "active" : ""; ?>">
+          <a class="nav-link <?= isset($_GET["page"]) == "register" ? "active" : ""; ?>" href="<?= __URL__."/index.php?page=register"; ?>">Register</a>
+        </li>
+      <?php } ?>
 
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>

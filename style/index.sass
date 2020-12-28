@@ -5,9 +5,14 @@ $nav-bg-hover: #1b1b1e
 $card-header-bg: #1b1b1e
 $card-body-bg: #242428
 $card-text: #ffffff
+$card-input-bg: #1b1b1e
 $card-select: #1b1b1e
 $search-bg: #161717
 $search-btn: tomato
+$link: tomato
+$link-hover: tomato
+$submit-btn: tomato
+$submit-btn-edge: darken($submit-btn, 13%)
 
 body
     background-color: $background
@@ -52,15 +57,24 @@ header
                 &.active
                     font-weight: bold
                     opacity: 1
-
+.col-3
+    .card
+        .card-header
+            text-align: center
 .card
     border: none
     color: $card-text
+    margin-bottom: 10px
+    &:last-of-type
+        margin-bottom: 0px
     .card-header
         background-color: $card-header-bg
         border-radius: 0px
     .card-body
         background-color: $card-body-bg
+        p
+            margin: 0px
+            margin-top: 10px
         select
             background-color: $card-select
             border: none
@@ -68,3 +82,37 @@ header
             &:focus
                 outline: none
                 box-shadow: none
+        .form-control
+            margin-bottom: 10px
+            border-radius: 0px
+            &:active, &:focus
+                box-shadow: none
+                outline: none
+            &:last-child
+                margin-bottom: 0px
+        input[type="text"], input[type="password"]
+            margin-bottom: 10px
+            &:last-child
+                margin-bottom: 0px
+            &.form-control
+                background-color: $card-input-bg!important
+                border: none
+                color: white
+        input[type="submit"]
+            background-color: $submit-btn
+            border: none
+            border-bottom: 3px solid $submit-btn-edge
+            color: white
+            text-shadow: 1px 1px 3px #000
+            text-transform: uppercase
+            font-weight: bold
+        a
+            display: block
+            margin-left: auto
+            margin-right: auto
+            color: $link
+            opacity: 0.7
+            text-decoration: none
+            &:hover
+                color: $link-hover
+                opacity: 1

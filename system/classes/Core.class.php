@@ -8,6 +8,18 @@
 
         }
 
+        public static function hash($value){
+
+            return hash("sha256", $value);
+
+        }
+
+        public static function secureInput($value){
+
+            return htmlspecialchars($value);
+
+        }
+
     }
 
 ?>

@@ -52,9 +52,17 @@ header a:hover {
   opacity: 1;
 }
 
+.col-3 .card .card-header {
+  text-align: center;
+}
+
 .card {
   border: none;
   color: #ffffff;
+  margin-bottom: 10px;
+}
+.card:last-of-type {
+  margin-bottom: 0px;
 }
 .card .card-header {
   background-color: #1b1b1e;
@@ -62,6 +70,10 @@ header a:hover {
 }
 .card .card-body {
   background-color: #242428;
+}
+.card .card-body p {
+  margin: 0px;
+  margin-top: 10px;
 }
 .card .card-body select {
   background-color: #1b1b1e;
@@ -71,4 +83,47 @@ header a:hover {
 .card .card-body select:focus {
   outline: none;
   box-shadow: none;
+}
+.card .card-body .form-control {
+  margin-bottom: 10px;
+  border-radius: 0px;
+}
+.card .card-body .form-control:active, .card .card-body .form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+.card .card-body .form-control:last-child {
+  margin-bottom: 0px;
+}
+.card .card-body input[type=text], .card .card-body input[type=password] {
+  margin-bottom: 10px;
+}
+.card .card-body input[type=text]:last-child, .card .card-body input[type=password]:last-child {
+  margin-bottom: 0px;
+}
+.card .card-body input[type=text].form-control, .card .card-body input[type=password].form-control {
+  background-color: #1b1b1e !important;
+  border: none;
+  color: white;
+}
+.card .card-body input[type=submit] {
+  background-color: tomato;
+  border: none;
+  border-bottom: 3px solid #ff2b05;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.card .card-body a {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: tomato;
+  opacity: 0.7;
+  text-decoration: none;
+}
+.card .card-body a:hover {
+  color: tomato;
+  opacity: 1;
 }

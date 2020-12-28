@@ -10,7 +10,7 @@
     $host = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "project_ninja";
+    $dbname = "dungeons_rpg";
 
     // Defines
     define("__HTTP__", isset($_SERVER["HTTPS"]) ? "https://" : "http://");

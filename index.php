@@ -27,7 +27,25 @@
 
     } else {
 
-        echo "index";
+        if(User::isLoggedIn()){
+
+            $user = new User($_SESSION["user_token"]);
+
+            if(Character::exist($user->getToken())){
+
+
+
+            } else {
+    
+                include_once(__PAGES__."/character.php");
+    
+            }
+    
+        } else {
+
+            echo "index";
+
+        }
 
     }
 
