@@ -1,0 +1,57 @@
+$background: #d4d4d4
+$header-color: tomato
+$nav-bg: #242428
+$nav-bg-hover: #1b1b1e
+$card-header-bg: #1b1b1e
+$card-body-bg: #242428
+$card-text: #ffffff
+$search-bg: #161717
+$search-btn: tomato
+
+body
+    background-color: $background
+
+header
+    height: 386px
+    width: 100%
+    background-color: darken($background, 73)
+    text-align: center
+    line-height: 386px
+    font-size: 72px
+    margin-bottom: 30px
+    a
+        color: $header-color
+        text-decoration: none
+        cursor: pointer
+        opacity: 0.7
+        &:hover
+            color: $header-color
+            opacity: 1
+
+.navbar
+    margin-bottom: 30px
+    background-color: $nav-bg!important
+    padding: 0px 15px
+    .navbar-nav
+        .nav-item
+            padding: 10px 15px
+            &:hover, &.active
+                background-color: $nav-bg-hover
+            .nav-link
+                color: white
+                opacity: 0.7
+                &:hover
+                    color: white
+                    opacity: 1
+                &.active
+                    font-weight: bold
+                    opacity: 1
+
+.card
+    border: none
+    color: $card-text
+    .card-header
+        background-color: $card-header-bg
+        border-radius: 0px
+    .card-body
+        background-color: $card-body-bg
