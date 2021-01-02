@@ -4,5 +4,6 @@
     $locale["change_language_czech"] = "Čeština";
     $locale["change_language_english"] = "Angličtina";
     $locale["change_language_slovak"] = "Slovenčina";
+    $locale["redirect"] = "Čoskoro budete presmerovaný.";
 
 ?>

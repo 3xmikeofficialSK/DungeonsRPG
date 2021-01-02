@@ -2,6 +2,15 @@
 
     include_once(__LOCALESET__."/register.php");
 
+    if(User::isLoggedIn()){
+
+        if(isset($_GET["page"]) && $_GET["page"] == "register"){
+
+            echo Core::redirect(__URL__);
+
+        }
+    }
+
 ?>
 
 <div class="card">

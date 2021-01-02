@@ -15,13 +15,8 @@
         "female" => "Žena",
         "other" => "Iné"
     );
+    $character["success"] = "<span class='text-success'>Charakter bol úspešne vytvorený.</span>";
     $character["empty"] = "<span class='text-danger'>Je potrebné vyplniť všetky údaje.</span>";
     $character["create"] = "Vytvoriť charakter";
-    $character["health"] = "Zdravie";
-    $character["intelligence"] = "Inteligencia";
-    $character["strenght"] = "Sila";
-    $character["dexterity"] = "Obratnosť";
-    $character["luck"] = "Štastie";
-    $character["defense"] = "Obrana";
 
 ?>

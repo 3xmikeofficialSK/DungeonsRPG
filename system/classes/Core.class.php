@@ -8,6 +8,12 @@
 
         }
 
+        public static function refresh($delay = 0){
+
+            return '<meta http-equiv="refresh" content="'.$delay.';" />';
+
+        }
+
         public static function hash($value){
 
             return hash("sha256", $value);

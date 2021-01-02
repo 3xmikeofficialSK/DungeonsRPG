@@ -1,4 +1,4 @@
-$background: #d4d4d4
+$background: #121212
 $header-color: tomato
 $nav-bg: #242428
 $nav-bg-hover: #1b1b1e
@@ -17,10 +17,18 @@ $submit-btn-edge: darken($submit-btn, 13%)
 body
     background-color: $background
 
+.text-right
+    text-align: right!important
+.text-center
+    text-align: center!important
+
+.font-italic
+    font-style: italic!important
+
 header
     height: 386px
     width: 100%
-    background-color: darken($background, 73)
+    background-color: lighten($background, 3%)
     text-align: center
     font-size: 72px
     margin-bottom: 30px
@@ -61,6 +69,25 @@ header
     .card
         .card-header
             text-align: center
+
+.main-nav
+    padding: 0px
+    margin: 0px
+    .main-list
+        list-style: none
+        padding: 5px 10px
+        &:hover > .sub-nav
+            display: block
+        .main-link
+        .sub-nav
+            display: none
+            padding: 0px
+            margin: 0px
+            .sub-list
+                list-style: none
+                padding: 5px 10px
+                .sub-link
+
 .card
     border: none
     color: $card-text
@@ -70,8 +97,24 @@ header
     .card-header
         background-color: $card-header-bg
         border-radius: 0px
+        &.male
+            color: #0d6efd
+        &.female
+            color: #dc3545
+        &.other
+            color: #ffffff
     .card-body
         background-color: $card-body-bg
+        .row
+            margin-left: -16px
+            margin-right: -16px
+        .stat
+            margin-bottom: 10px
+            padding: 5px 16px
+            &:hover
+                background-color: #1b1b1e
+            &:last-child
+                margin-bottom: 0px
         p
             margin: 0px
             margin-top: 10px

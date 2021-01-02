@@ -46,15 +46,19 @@
 
                         <input type="submit" value="<?= $character["create"]; ?>" class="form-control" name="create_character">
 
-                        <?php 
-                        
-                            if(isset($_POST["create_character"])){
+                            <?php 
+                            
+                                if(isset($_POST["create_character"])){
 
-                                echo $character[Character::create($_POST["character_name"], $_POST["character_class"], $_POST["character_sex"])]."<br>".$locale["redirect"].Core::redirect(__URL__, 3);
+                                    echo '<p class="text-center">';
 
-                            }
-                        
-                        ?>
+                                        echo $character[Character::create($_POST["character_name"], $user->getToken(), $_POST["character_class"], $_POST["character_sex"])]."<br>".$locale["redirect"].Core::redirect(__URL__, 3);
+
+                                    echo '</p>';
+
+                                }
+                            
+                            ?>
                     
                     </form>
                 
