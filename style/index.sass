@@ -11,6 +11,7 @@ $search-bg: #161717
 $search-btn: tomato
 $link: tomato
 $link-hover: tomato
+$link-active: tomato
 $submit-btn: tomato
 $submit-btn-edge: darken($submit-btn, 13%)
 
@@ -56,6 +57,9 @@ header
             padding: 10px 15px
             &:hover, &.active
                 background-color: $nav-bg-hover
+                .nav-link
+                    opacity: 1
+                    color: $link-active
             .nav-link
                 color: white
                 opacity: 0.7
@@ -91,9 +95,7 @@ header
 .card
     border: none
     color: $card-text
-    margin-bottom: 10px
-    &:last-of-type
-        margin-bottom: 0px
+    margin-bottom: 30px
     .card-header
         background-color: $card-header-bg
         border-radius: 0px
@@ -133,7 +135,7 @@ header
                 outline: none
             &:last-child
                 margin-bottom: 0px
-        input[type="text"], input[type="password"]
+        input[type="text"], input[type="password"], input[type="number"]
             margin-bottom: 10px
             &:last-child
                 margin-bottom: 0px
@@ -141,7 +143,7 @@ header
                 background-color: $card-input-bg!important
                 border: none
                 color: white
-        input[type="submit"]
+        button, input[type="submit"]
             background-color: $submit-btn
             border: none
             border-bottom: 3px solid $submit-btn-edge

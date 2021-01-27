@@ -16,6 +16,7 @@
         "other" => "Iné"
     );
     $character["success"] = "<span class='text-success'>Charakter bol úspešne vytvorený.</span>";
+    $character["empty"] = "<span class='text-danger'>Už máte vytvorený charakter.</span>";
     $character["empty"] = "<span class='text-danger'>Je potrebné vyplniť všetky údaje.</span>";
     $character["create"] = "Vytvoriť charakter";
 

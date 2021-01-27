@@ -1,6 +1,6 @@
 <?php 
 
-    require_once("./system/config.php");
+    require_once("../system/config.php");
 
     include_once(__LOCALESET__."/index.php");
 
@@ -13,7 +13,7 @@
     if(isset($_GET["page"])){
 
         $page = $_GET["page"];
-        $page_file = __PAGES__."/".$page.".php";
+        $page_file = __ADMIN_PAGES__."/".$page.".php";
 
         if(file_exists($page_file) && filesize($page_file) > 0){
 
@@ -29,23 +29,23 @@
 
         if(User::isLoggedIn()){
 
-            if(Character::exist($user->getToken())){
+            if($user->getRights()){
 
-                Core::openCard("Welcome");
+                Core::openCard($locale["administration"]["welcome"]["title"]);
+
+                    echo $locale["administration"]["welcome"]["content"];
 
                 Core::closeCard();
 
             } else {
-    
-                include_once(__PAGES__."/character.php");
-    
+
+                echo Core::redirect(__URL__);
+
             }
     
         } else {
 
-            Core::openCard("Welcome");
-
-            Core::closeCard();
+            echo Core::redirect(__URL__);
 
         }
 

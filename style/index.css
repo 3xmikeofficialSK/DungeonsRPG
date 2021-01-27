@@ -51,6 +51,10 @@ header a:hover {
 .navbar .navbar-nav .nav-item:hover, .navbar .navbar-nav .nav-item.active {
   background-color: #1b1b1e;
 }
+.navbar .navbar-nav .nav-item:hover .nav-link, .navbar .navbar-nav .nav-item.active .nav-link {
+  opacity: 1;
+  color: tomato;
+}
 .navbar .navbar-nav .nav-item .nav-link {
   color: white;
   opacity: 0.7;
@@ -91,10 +95,7 @@ header a:hover {
 .card {
   border: none;
   color: #ffffff;
-  margin-bottom: 10px;
-}
-.card:last-of-type {
-  margin-bottom: 0px;
+  margin-bottom: 30px;
 }
 .card .card-header {
   background-color: #1b1b1e;
@@ -150,18 +151,18 @@ header a:hover {
 .card .card-body .form-control:last-child {
   margin-bottom: 0px;
 }
-.card .card-body input[type=text], .card .card-body input[type=password] {
+.card .card-body input[type=text], .card .card-body input[type=password], .card .card-body input[type=number] {
   margin-bottom: 10px;
 }
-.card .card-body input[type=text]:last-child, .card .card-body input[type=password]:last-child {
+.card .card-body input[type=text]:last-child, .card .card-body input[type=password]:last-child, .card .card-body input[type=number]:last-child {
   margin-bottom: 0px;
 }
-.card .card-body input[type=text].form-control, .card .card-body input[type=password].form-control {
+.card .card-body input[type=text].form-control, .card .card-body input[type=password].form-control, .card .card-body input[type=number].form-control {
   background-color: #1b1b1e !important;
   border: none;
   color: white;
 }
-.card .card-body input[type=submit] {
+.card .card-body button, .card .card-body input[type=submit] {
   background-color: tomato;
   border: none;
   border-bottom: 3px solid #ff2b05;

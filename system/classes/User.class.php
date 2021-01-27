@@ -6,6 +6,7 @@
         private $username;
         private $password;
         private $token;
+        private $rights;
 
         function __construct($token){
 
@@ -17,6 +18,7 @@
             $this->username = $query["username"];
             $this->password = $query["password"];
             $this->token = $query["token"];
+            $this->rights = $query["rights"];
 
         }
 
@@ -44,11 +46,30 @@
 
         }
 
+        public function getRights(){
+
+            return $this->rights;
+
+        }
+
         public static function isLoggedIn(){
+
+            if(isset($_SESSION["user_token"]) && trim($_SESSION["user_token"]) != "" || isset($_COOKIE["user_token"]) && trim($_COOKIE["user_token"]) != ""){
+
+                return true;
+
+            }
+
+        }
+        public static function getUserToken(){
 
             if(isset($_SESSION["user_token"]) && trim($_SESSION["user_token"]) != ""){
 
-                return true;
+                return $_SESSION["user_token"];
+
+            } elseif(isset($_COOKIE["user_token"]) && trim($_COOKIE["user_token"]) != "") {
+
+                return $_COOKIE["user_token"];
 
             }
 
@@ -62,7 +83,7 @@
 
                     $username = Core::secureInput($username);
                     $password = Core::hash($password);
-                    $token = Core::hash($username.$password);
+                    $token = Core::hash(Core::randomString(64));
 
                     Database::queryAlone("INSERT INTO users SET username='$username', password='$password', token='$token' ;");
                     return "success";
@@ -91,7 +112,7 @@
 
         }
 
-        public static function logMeIn($username, $password){
+        public static function logMeIn($username, $password, $remember = "off"){
 
             if(isset($username) && trim($username) != "" && isset($password) && trim($password) != ""){
 
@@ -103,8 +124,13 @@
 
                     if(Core::hash($password) == $query["password"]){
 
-                        $_SESSION["user_token"] = $query["token"];
-                        return "success";
+                        if($remember == "on"){
+                            setcookie("user_token",$query["token"],time()+60*60*24*365);
+                            return "success";
+                        } else {
+                            $_SESSION["user_token"] = $query["token"];
+                            return "success";
+                        }
 
                     } else {
 
@@ -129,6 +155,8 @@
         public static function logout(){
 
             session_destroy();
+            unset($_COOKIE["user_token"]);
+            setcookie("user_token", "", time()-3600);
 
         }
 

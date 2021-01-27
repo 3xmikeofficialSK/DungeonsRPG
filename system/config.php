@@ -19,6 +19,7 @@
     define("__SYSTEM__", $_SERVER["DOCUMENT_ROOT"]."/system");
     define("__CLASSES__", $_SERVER["DOCUMENT_ROOT"]."/system/classes");
     define("__PAGES__", $_SERVER["DOCUMENT_ROOT"]."/pages");
+    define("__ADMIN_PAGES__", $_SERVER["DOCUMENT_ROOT"]."/admin/pages");
     define("__LOCALE__", $_SERVER["DOCUMENT_ROOT"]."/system/locale");
     define("__LOCALE_DEFAULT__", "sk");
 
@@ -64,7 +65,7 @@
 
     if(User::isLoggedIn()){
 
-        $user = new User($_SESSION["user_token"]);
+        $user = new User(User::getUserToken());
 
         if(Character::exist($user->getToken())){
 

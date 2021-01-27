@@ -15,17 +15,17 @@
     <ul class="navbar-nav">
     
       <li class="nav-item <?= isset($_GET["page"]) ? "" : "active"; ?>">
-        <a class="nav-link <?= isset($_GET["page"]) ? "" : "active"; ?>" href="<?= __URL__; ?>">Domov</a>
+        <a class="nav-link" href="<?= __URL__; ?>">Domov</a>
       </li>
 
       <?php if(!User::isLoggedIn()){ ?>
-        <li class="nav-item <?= isset($_GET["page"]) == "register" ? "active" : ""; ?>">
-          <a class="nav-link <?= isset($_GET["page"]) == "register" ? "active" : ""; ?>" href="<?= __URL__."/index.php?page=register"; ?>">Register</a>
+        <li class="nav-item <?= isset($_GET["page"]) && trim($_GET["page"]) == "register" ? "active" : ""; ?>">
+          <a class="nav-link" href="<?= __URL__."/index.php?page=register"; ?>">Register</a>
         </li>
       <?php } ?>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">About</a>
       </li>
 
     </ul>

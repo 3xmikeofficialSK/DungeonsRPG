@@ -1,0 +1,5 @@
+<?php 
+
+    $inventory["title"] = "Inventár";
+
+?>

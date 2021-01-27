@@ -20,6 +20,20 @@
 
 <div class="card">
 
-    <div class="card-header"></div>
+    <div class="card-header"><?= $inventory["title"]; ?></div>
+
+    <div class="card-body">
+    
+        <?
+
+            foreach($char->getInventory() as $item){
+
+                echo $item["id"].". ".$locale["items"][$item["locale_name"]]."</br>";
+
+            }
+        
+        ?>
+
+    </div>
 
 </div>

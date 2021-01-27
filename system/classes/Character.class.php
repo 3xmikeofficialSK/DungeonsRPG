@@ -20,6 +20,9 @@
         private $stat_points;
         private $perk_points;
         private $mount;
+        private $weight;
+        private $current_weight;
+        private $inventory = array();
 
         public static function create($name, $token, $class, $sex){
 
@@ -27,65 +30,73 @@
 
                 global $dbname;
 
-                $hp = 100;
-                $max_hp = 100;
-                $int = 100;
-                $max_int = 100;
-                $dex = 100;
-                $max_dex = 100;
-                $str = 10;
-                $luck = 5;
-                $defense = 0;
+                if(!self::exist($token)){
 
-                switch($class){
+                    $hp = 100;
+                    $max_hp = 100;
+                    $int = 100;
+                    $max_int = 100;
+                    $dex = 100;
+                    $max_dex = 100;
+                    $str = 10;
+                    $luck = 5;
+                    $defense = 0;
 
-                    case "warrior":
-                        $hp = 150;
-                        $max_hp = 150;
-                        $str = 20;
-                        $defense = 10;
-                        break;
-                    case "assassin":
-                        $str = 25;
-                        $luck = 15;
-                        $dex = 150;
-                        $max_dex = 150;
-                        break;
-                    case "hunter":
-                        $hp = 150;
-                        $max_hp = 150;
-                        $dex = 150;
-                        $max_dex = 150;
-                        $str = 15;
-                        break;
-                    case "mage":
-                        $hp = 150;
-                        $max_hp = 150;
-                        $int = 175;
-                        $max_int = 175;
-                        $dex = 150;
-                        $max_dex = 150;
-                        break;
+                    switch($class){
+
+                        case "warrior":
+                            $hp = 150;
+                            $max_hp = 150;
+                            $str = 20;
+                            $defense = 10;
+                            break;
+                        case "assassin":
+                            $str = 25;
+                            $luck = 15;
+                            $dex = 150;
+                            $max_dex = 150;
+                            break;
+                        case "hunter":
+                            $hp = 150;
+                            $max_hp = 150;
+                            $dex = 150;
+                            $max_dex = 150;
+                            $str = 15;
+                            break;
+                        case "mage":
+                            $hp = 150;
+                            $max_hp = 150;
+                            $int = 175;
+                            $max_int = 175;
+                            $dex = 150;
+                            $max_dex = 150;
+                            break;
+
+                    }
+
+                    $name = Core::secureInput($name);
+                    $token = Core::secureInput($token);
+                    $class = Core::secureInput($class);
+                    $sex = Core::secureInput($sex);
+                    $hp = Core::secureInput($hp);
+                    $max_hp = Core::secureInput($max_hp);
+                    $int = Core::secureInput($int);
+                    $max_int = Core::secureInput($max_int);
+                    $dex = Core::secureInput($dex);
+                    $max_dex = Core::secureInput($max_dex);
+                    $str = Core::secureInput($str);
+                    $luck = Core::secureInput($luck);
+                    $defense = Core::secureInput($defense);
+
+                    $query = Database::queryAlone("INSERT INTO $dbname.characters SET name='$name', owner='$token', class='$class', sex='$sex', health='$hp', max_health='$max_hp', intelligence='$int', max_intelligence='$max_int', dexterity='$dex', max_dexterity='$max_dex', strenght='$str', luck='$luck', defense='$defense'  ;");
+
+                    return "success";
+
+                } else {
+
+                    return "exist";
 
                 }
-
-                $name = Core::secureInput($name);
-                $token = Core::secureInput($token);
-                $class = Core::secureInput($class);
-                $sex = Core::secureInput($sex);
-                $hp = Core::secureInput($hp);
-                $max_hp = Core::secureInput($max_hp);
-                $int = Core::secureInput($int);
-                $max_int = Core::secureInput($max_int);
-                $dex = Core::secureInput($dex);
-                $max_dex = Core::secureInput($max_dex);
-                $str = Core::secureInput($str);
-                $luck = Core::secureInput($luck);
-                $defense = Core::secureInput($defense);
-
-                $query = Database::queryAlone("INSERT INTO $dbname.characters SET name='$name', owner='$token', class='$class', sex='$sex', health='$hp', max_health='$max_hp', intelligence='$int', max_intelligence='$max_int', dexterity='$dex', max_dexterity='$max_dex', strenght='$str', luck='$luck', defense='$defense'  ;");
-
-                return "success";
 
             } else {
 
@@ -119,6 +130,9 @@
             $this->stat_points = $query["stat_points"];
             $this->perk_points = $query["perk_points"];
             $this->mount = $query["mount"];
+            $this->weight = $query["weight"];
+            $this->current_weight = self::countCurrWeight($token);
+            $this->inventory = self::prepareInventory($token);
 
         }
 
@@ -300,11 +314,58 @@
 
         }
 
+        public function getWeight(){
+
+            return $this->weight;
+
+        }
+
+        public function countCurrWeight($token){
+
+            global $dbname;
+
+            $query = Database::queryAll("SELECT * FROM $dbname.items WHERE owner='$token' ;");
+
+            $weight = 0;
+
+            foreach($query as $item){
+
+                $weight = $weight + ($item["weight"]*$item["count"]);
+
+            }
+
+            return $weight;
+
+
+        }
+
+        public function getCurrWeight(){
+
+            return $this->current_weight;
+
+        }
+
+        public function prepareInventory($token){
+
+            global $dbname;
+
+            $query = Database::queryAll("SELECT * FROM $dbname.items WHERE owner='$token' ;");
+
+            return $query;
+
+        }
+
+        public function getInventory(){
+
+            return $this->inventory;
+
+        }
+
         public static function exist($token){
 
             global $dbname;
 
-            $query = Database::query("SELECT * FROM $dbname.characters WHERE owner='$token' ;");
+            $query = Database::query("SELECT * FROM $dbname.characters WHERE owner='$token' LIMIT 1 ;");
 
             return $query;
 

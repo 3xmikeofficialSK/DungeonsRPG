@@ -15,7 +15,7 @@
 
         if(Character::exist($user->getToken())){
 
-            $char = new Character($_SESSION["user_token"]);
+            $char = new Character(User::getUserToken());
         
 ?>
 
@@ -80,6 +80,11 @@
                     <div class="col-12 text-center font-italic"><?= $char->getDefense(); ?></div>
                 </div>
 
+                <div class="stat">
+                    <div class="col-12 text-center text-info"><?= $ui["carry_weight"]; ?></div>
+                    <div class="col-12 text-center font-italic"><?= ceil($char->getCurrWeight())." / ".$char->getWeight(); ?></div>
+                </div>
+
                 <!-- Zlato -->
                 <div class="stat">
 
@@ -117,7 +122,7 @@
                 </div>
 
                 <!-- Perk points -->
-                <div class="stat">
+                <div class="stat mb-3">
 
                     <div class="row">
                     
@@ -133,6 +138,14 @@
                     <a href="<?= __URL__."/index.php?page=inventory"; ?>"><?= $ui["inventory"]; ?></a>
 
                 </div>
+
+                <? if($user->getRights() == 1){ ?>
+                    <div class="col-12 text-center">
+                    
+                        <a href="<?= __URL__."/admin/index.php"; ?>"><?= $ui["administration"]; ?></a>
+
+                    </div>
+                <? } ?>
 
                 <div class="col-12 text-center">
                 
@@ -179,6 +192,10 @@
                 <input type="text" name="username" class="form-control" placeholder="<?= $ui['username']; ?>">
                 <input type="password" name="password" class="form-control" placeholder="<?= $ui['password']; ?>">
 
+                <div class="text-left mb-2">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember"><?= $ui["remember"]; ?></label></div>
+
                 <input type="submit" name="login" class="form-control" value="<?= $ui['submit']; ?>">
 
                     <?php 
@@ -187,7 +204,15 @@
 
                             echo '<p class="text-center">';
 
-                                echo $ui[User::logMeIn($_POST["username"], $_POST["password"])].Core::redirect(__ACTUAL_URL__, 1);
+                                if(isset($_POST["remember"])){
+
+                                    echo $ui[User::logMeIn($_POST["username"], $_POST["password"], $_POST["remember"])].Core::redirect(__ACTUAL_URL__, 1);
+
+                                } else {
+
+                                    echo $ui[User::logMeIn($_POST["username"], $_POST["password"])].Core::redirect(__ACTUAL_URL__, 1);
+
+                                }
 
                             echo '</p>';
                             
